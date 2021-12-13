@@ -1,0 +1,6 @@
+---
+- hosts: tek
+  become: true
+  tasks:
+   - include: ftp.yml
+

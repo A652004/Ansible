@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  vars:
+   - globes: httpd 
+  tasks:
+   - name: install "{{ globes }}" package
+     action: yum name="{{ globes }}" state=present

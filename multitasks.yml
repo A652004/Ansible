@@ -1,0 +1,13 @@
+---
+- hosts: tek
+  become: true
+  vars_prompt:
+   - name: globes
+     prompt: Please enter the package name to install
+  tasks:
+   - name: install "{{ globes }}" package
+     action: yum name='{{ globes }}' state=present
+   - name: httpd uninstall
+     action: yum pkg=httpd state=absent 
+   - name: finger installation
+     action: yum name=finger state=present

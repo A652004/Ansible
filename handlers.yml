@@ -1,0 +1,16 @@
+--- 
+ - hosts: tek
+   become: true
+   connection: ssh
+   gather_facts: yes
+   vars_prompt:
+    - name: variable_name
+      prompt: Pleae Enter The Package Name to Install 
+   tasks:
+    - name: install "{{ variable_name }}" package
+      action: yum name='{{ variable_name }}' state=present
+      notify: restart vsftpd
+    
+   handlers:  
+    - name: restart vsftpd
+      action: service name=vsftpd state=restarted

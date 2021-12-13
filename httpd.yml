@@ -1,0 +1,9 @@
+---
+- hosts: tek
+  become: true
+  tasks:
+   - name: httpd installation
+     yum pkg=httpd state=present
+
+   - name: starting httpd service
+     service pkg=httpd state=started
